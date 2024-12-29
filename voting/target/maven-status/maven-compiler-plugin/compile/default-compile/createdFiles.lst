@@ -1,0 +1,9 @@
+com\example\demo\model\Candidate.class
+com\example\demo\VotingApplication.class
+com\example\demo\model\User.class
+com\example\demo\model\UserDto.class
+com\example\demo\mapper\UserMapper.class
+com\example\demo\repository\RegisterRepos.class
+com\example\demo\controller\LoginController.class
+com\example\demo\controller\RegisterController.class
+com\example\demo\controller\AdminController.class
