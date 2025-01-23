@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="commons/all-head-links :: head">
+
+</head>
+
+<body>
+    <div th:replace="my-navbar :: div"></div>
+    <div class="container">
+
+        <div class="w-50 mx-auto mt-5 candidate-form">
+            <!-- Flash message section -->
+            <div class="alert alert-success w-75 mx-auto mb-3" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+            <form class="row " th:object="${candidate}" method="post" th:action="@{/voting}">
+                <div class="mb-4 col-12 ">
+                    <label for="candidateName" class="form-label">Title</label>
+                    <input type="text" id="candidateName" class="form-control" th:field="*{candidateName}" placeholder="Joe don">
+                    <div class="text-danger" th:if="${#fields.hasErrors('candidateName')}" th:errors="*{candidateName}"></div>
+
+                </div>
+
+                <div class="mb-4 col-12">
+                    <label for="partyName" class="form-label">Party name</label>
+                    <textarea id="partyName" class="form-control"
+                        th:field="*{partyName}"></textarea>
+                    <div class="text-danger" th:if="${#fields.hasErrors('partyName')}" th:errors="*{partyName}"></div>
+                </div>
+
+                <div class="mb-4 col-sm-12 col-md-6 ">
+                    <label for="image-url" class="form-label">Image URL</label>
+                    <input type="text" id="image-url" class="form-control" placeholder="https://tinyurl.com/3y7sm2x3"
+                        th:field="*{imageUrl}">
+                    <div class="text-danger" th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"></div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 save-btn"><i class="fa-regular fa-bookmark"></i>
+                    Save</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+    <div th:replace="commons/all-js-links :: div"></div>
+
+</body>
+
+</html>
