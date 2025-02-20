@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="commons/all-head-links :: head">
+
+</head>
+
+<body>
+<div th:replace="my-navbar :: div"></div>
+<div class="container">
+
+    <div class="w-50 mx-auto mt-5 register-from">
+        <!-- Flash message section -->
+        <div class="alert alert-success w-75 mx-auto mb-3" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+        <form class="row " th:object="${user}" method="post" th:action="@{/register}">
+            <div class="mb-4 col-12 ">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" th:field="*{username}" placeholder="Jon deo">
+                <div class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+
+            </div>
+
+                <div class="mb-4 col-12 ">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" id="email" class="form-control" th:field="*{email}" placeholder="abc@gmail.com">
+                    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+                </div>
+
+            <div class="mb-4 col-12">
+                <label for="password" class="form-label">Password</label>
+                <textarea id="password" class="form-control" placeholder="****" th:field="*{password}"></textarea>
+                <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+
+<!--            <div class="mb-4 col-sm-12 col-md-6 ">-->
+<!--                <label for="image-url" class="form-label">Image URL</label>-->
+<!--                <input type="text" id="image-url" class="form-control"-->
+<!--                       th:field="*{imageUrl}">-->
+<!--                <div class="text-danger" th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"></div>-->
+<!--            </div>-->
+            <button type="submit" class="btn btn-primary mt-3 save-btn"><i class="fa-regular fa-bookmark"></i>
+                Save</button>
+        </form>
+
+    </div>
+</div>
+
+
+<div th:replace="commons/all-js-links :: div"></div>
+
+</body>
+
+</html>
